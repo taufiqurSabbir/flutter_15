@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_15/module_10/class_1.dart';
 import 'home.dart';
 import 'module_9/class_3.dart';
 
@@ -8,8 +9,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter 15',
-      home: Class3(),
+      home: Module11Class1(),
     );
   }
 }
