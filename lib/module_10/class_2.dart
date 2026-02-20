@@ -11,7 +11,6 @@ class Class2 extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
         title: Text('class 2',
         style: TextStyle(
           color: Colors.white
@@ -51,7 +50,6 @@ class Class2 extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Phone number',
 
-                  border: OutlineInputBorder()
 
                 ),
 
@@ -71,7 +69,7 @@ class Class2 extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Password',
 
-                  border: OutlineInputBorder()
+
 
                 ),
 
@@ -90,10 +88,7 @@ class Class2 extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white
-                    ),
+
                     onPressed: (){
                       if(_formKey.currentState!.validate()){
                         ScaffoldMessenger.of(context).showSnackBar(
