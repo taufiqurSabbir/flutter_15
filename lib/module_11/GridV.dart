@@ -9,6 +9,7 @@ class Gridv extends StatelessWidget {
       appBar: AppBar(
         title: Text('Grid'),
       ),
+
       body: GridView.builder(
 
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
