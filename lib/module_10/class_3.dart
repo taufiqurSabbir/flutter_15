@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class M10Class3 extends StatelessWidget {
   const M10Class3({super.key});
@@ -38,14 +39,14 @@ class M10Class3 extends StatelessWidget {
                 ),
 
                 Container(
-                  height: screenHeight*0.18,
-                  width: screenWidth*0.6,
+                  height: 150.h,
+                  width: 300.w,
                   color: Colors.green,
                 ),
 
                 Text('Test text -2',
                   style:  TextStyle(
-                      fontSize: 20*1
+                      fontSize: 20.sp
                   ),
                 )
               ],
