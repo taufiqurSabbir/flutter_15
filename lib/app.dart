@@ -3,6 +3,7 @@ import 'package:flutter_15/module_10/class_1.dart';
 import 'package:flutter_15/module_10/class_2.dart';
 import 'package:flutter_15/module_11/GridV.dart';
 import 'package:flutter_15/module_11/class_1.dart';
+import 'package:flutter_15/module_11/class_2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_10/class_3.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         title: 'Flutter 15',
-        home: Gridv(),
+        home: Module11Class2(),
       );
 
 
