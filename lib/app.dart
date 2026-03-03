@@ -5,6 +5,9 @@ import 'package:flutter_15/module_11/GridV.dart';
 import 'package:flutter_15/module_11/class_1.dart';
 import 'package:flutter_15/module_11/class_2.dart';
 import 'package:flutter_15/module_11/class_3.dart';
+import 'package:flutter_15/module_12/navi/page-1.dart';
+import 'package:flutter_15/module_12/navi/page2.dart';
+import 'package:flutter_15/module_12/navi/page3.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_10/class_3.dart';
@@ -23,6 +26,18 @@ class MyApp extends StatelessWidget {
     builder: (_ , child) {
 
       return MaterialApp(
+
+        routes: {
+          '/':(context) =>  Class3(),
+          '/class1':(context) =>  Module11Class1(),
+          '/class2':(context) =>  Module11Class2(),
+          '/class3':(context) =>  Alert(),
+          '/page1':(context) =>  Page1(),
+          '/page2':(context) =>  Page2(name: '',),
+          '/page3':(context) =>  Page3(),
+        },
+        initialRoute: '/page1',
+
         theme: ThemeData(
             brightness: Brightness.light,
             primaryColor: Colors.deepPurple,
@@ -60,7 +75,7 @@ class MyApp extends StatelessWidget {
 
         debugShowCheckedModeBanner: false,
         title: 'Flutter 15',
-        home: Alert(),
+
       );
 
 
