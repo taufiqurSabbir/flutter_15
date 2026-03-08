@@ -6,6 +6,7 @@ import 'package:flutter_15/module_11/class_1.dart';
 import 'package:flutter_15/module_11/class_2.dart';
 import 'package:flutter_15/module_11/class_3.dart';
 import 'package:flutter_15/module_12/class_2.dart';
+import 'package:flutter_15/module_12/class_3.dart';
 import 'package:flutter_15/module_12/navi/page-1.dart';
 import 'package:flutter_15/module_12/navi/page2.dart';
 import 'package:flutter_15/module_12/navi/page3.dart';
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
           '/page2':(context) =>  Page2(name: '',),
           '/page3':(context) =>  Page3(),
           '/Module12Class2':(context) =>  Module12Class2(),
+          '/Module12Class3':(context) =>  Module12Class3(),
         },
-        initialRoute: '/Module12Class2',
+        initialRoute: '/Module12Class3',
 
         theme: ThemeData(
             brightness: Brightness.light,
