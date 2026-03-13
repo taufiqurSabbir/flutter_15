@@ -13,6 +13,7 @@ import 'package:flutter_15/module_12/navi/page3.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_10/class_3.dart';
+import 'module_13/class_1.dart';
 import 'module_9/class_3.dart';
 
 class MyApp extends StatelessWidget {
@@ -39,8 +40,9 @@ class MyApp extends StatelessWidget {
           '/page3':(context) =>  Page3(),
           '/Module12Class2':(context) =>  Module12Class2(),
           '/Module12Class3':(context) =>  Module12Class3(),
+          '/Module13Class1':(context) =>  Module13Class1(),
         },
-        initialRoute: '/Module12Class3',
+        initialRoute: '/Module13Class1',
 
         theme: ThemeData(
             brightness: Brightness.light,
