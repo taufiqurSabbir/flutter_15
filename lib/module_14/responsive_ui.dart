@@ -25,6 +25,7 @@ class ResponsiveUi extends StatelessWidget {
               )
             ],
           ),
+
           SizedBox(height: 10,),
           Row(
             children: [
