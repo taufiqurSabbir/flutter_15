@@ -12,6 +12,8 @@ import 'package:flutter_15/module_12/navi/page2.dart';
 import 'package:flutter_15/module_12/navi/page3.dart';
 import 'package:flutter_15/module_13/class_2.dart';
 import 'package:flutter_15/module_13/class_3.dart';
+import 'package:flutter_15/module_14/class_1.dart';
+import 'package:flutter_15/module_14/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_10/class_3.dart';
@@ -31,20 +33,25 @@ class MyApp extends StatelessWidget {
 
       return MaterialApp(
 
-        routes: {
-          '/':(context) =>  Class3(),
-          '/class1':(context) =>  Module11Class1(),
-          '/class2':(context) =>  Module11Class2(),
-          '/class3':(context) =>  Alert(),
-          '/page1':(context) =>  Page1(),
-          '/page2':(context) =>  Page2(name: '',),
-          '/page3':(context) =>  Page3(),
-          '/Module12Class2':(context) =>  Module12Class2(),
-          '/Module12Class3':(context) =>  Module12Class3(),
-          '/Module13class2':(context) =>  Module13class2(),
-          '/BottomNav':(context) =>  BottomNav(),
-        },
-        initialRoute: '/BottomNav',
+        // routes: {
+        //   '/':(context) =>  Class3(),
+        //   '/class1':(context) =>  Module11Class1(),
+        //   '/class2':(context) =>  Module11Class2(),
+        //   '/class3':(context) =>  Alert(),
+        //   '/page1':(context) =>  Page1(),
+        //   '/page2':(context) =>  Page2(name: '',),
+        //   '/page3':(context) =>  Page3(),
+        //   '/Module12Class2':(context) =>  Module12Class2(),
+        //   '/Module12Class3':(context) =>  Module12Class3(),
+        //   '/Module13class2':(context) =>  Module13class2(),
+        //   '/BottomNav':(context) =>  BottomNav(),
+        //   '/module14Class1':(context) =>  module14Class1(),
+        //   '/Module11Class2':(context) =>  Module11Class2(),
+        //   '/SplashScreen':(context) =>  SplashScreen(),
+        // },
+        // initialRoute: '/SplashScreen',
+
+        home: SplashScreen(),
 
         theme: ThemeData(
             brightness: Brightness.light,
