@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_15/module_10/class_1.dart';
 import 'package:flutter_15/module_10/class_2.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
     builder: (_ , child) {
 
       return MaterialApp(
+
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
 
         // routes: {
         //   '/':(context) =>  Class3(),
