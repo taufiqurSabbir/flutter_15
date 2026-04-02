@@ -3,6 +3,7 @@ import 'package:flutter_15/module_13/class_3.dart';
 import 'package:flutter_15/module_14/class_1.dart';
 import 'package:flutter_15/module_14/class_2/MasonryGridView.dart';
 import 'package:flutter_15/module_14/class_2/shimmer_example.dart';
+import 'package:flutter_15/module_14/class_3.dart';
 import 'package:flutter_15/module_14/responsive_ui.dart';
 import 'package:lottie/lottie.dart';
 
@@ -24,8 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigateNextPage(){
-    Future.delayed(Duration(seconds: 10),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ShimmerExample()));
+    Future.delayed(Duration(seconds: 3),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Module14Class3()));
 
     });
 

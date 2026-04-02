@@ -14,6 +14,7 @@ import 'package:flutter_15/module_12/navi/page3.dart';
 import 'package:flutter_15/module_13/class_2.dart';
 import 'package:flutter_15/module_13/class_3.dart';
 import 'package:flutter_15/module_14/class_1.dart';
+import 'package:flutter_15/module_14/class_3.dart';
 import 'package:flutter_15/module_14/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
         // },
         // initialRoute: '/SplashScreen',
 
-        home: SplashScreen(),
+        home: Module14Class3(),
 
         theme: ThemeData(
             brightness: Brightness.light,
