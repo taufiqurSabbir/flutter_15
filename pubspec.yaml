@@ -40,6 +40,8 @@ dependencies:
   shimmer: ^3.0.0
   lottie: any
   device_preview:
+  sqflite:
+  path:
 
 dev_dependencies:
   flutter_test:
