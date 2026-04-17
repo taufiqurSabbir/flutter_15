@@ -36,6 +36,20 @@ class TaskDatabase{
 
   }
 
+  static Future<void>deleteTask(int id) async {
+    final db = await getDB();
+    db.delete('tasks', where: 'id = ?', whereArgs: [id] );
+
+  }
+
+
+
+  static Future<void>updateTask(Task task) async {
+    final db = await getDB();
+
+   db.update('tasks', task.toMap(), where: 'id=?', whereArgs: [task.id]);
+
+  }
 
 
 

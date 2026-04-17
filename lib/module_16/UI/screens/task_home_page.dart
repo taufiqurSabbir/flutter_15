@@ -32,6 +32,22 @@ class _TaskHomePageState extends State<TaskHomePage> {
 
   }
 
+  Future<void>deleteTask(int id) async {
+  await TaskDatabase.deleteTask(id);
+   refreshTask();
+
+  }
+
+
+  Future<void>toggleTaskStatus(Task task) async {
+    await TaskDatabase.updateTask(Task(
+      id: task.id,
+        title: task.title,
+        isDone: !task.isDone));
+    refreshTask();
+
+  }
+
 
 
   @override
@@ -65,16 +81,39 @@ class _TaskHomePageState extends State<TaskHomePage> {
                 itemCount: tasks.length,
                 itemBuilder: (context,index){
                   final task = tasks[index];
-              return Card(
-                child: ListTile(
-                  leading: Checkbox(value: false, onChanged: (_){}),
-                  title: Text(task.title),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,))
-                    ],
+              return Dismissible(
+                key: Key(task.id.toString()),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.red,
+                  child: Icon(Icons.delete,color: Colors.white,),
+                ),
+                onDismissed: (_){
+                  deleteTask(task.id!);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Task deleted'))
+                  );
+                },
+                child: Card(
+                  child: ListTile(
+                    leading: Checkbox(value: task.isDone, onChanged: (_){
+                      toggleTaskStatus(task);
+                    }),
+                    title: Text(task.title,style: TextStyle(
+                      decoration:  task.isDone ? TextDecoration.lineThrough :  TextDecoration.none,
+                      color: task.isDone ? Colors.grey : Colors.black
+                    ),),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
+                        IconButton(onPressed: (){
+                          deleteTask(task.id!);
+                        }, icon: Icon(Icons.delete,color: Colors.red,))
+                      ],
+                    ),
                   ),
                 ),
               );
