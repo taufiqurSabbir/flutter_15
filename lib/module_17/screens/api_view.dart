@@ -35,7 +35,6 @@ class _ApiViewState extends State<ApiView> {
     final response = await http.delete(Uri.parse(Urls.deletePost(id)));
     log(response.statusCode.toString());
     log(response.body.toString());
-
     if(response.statusCode == 200){
       await fetchPosts();
       setState(() {
