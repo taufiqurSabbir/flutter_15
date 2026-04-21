@@ -17,6 +17,7 @@ import 'package:flutter_15/module_14/class_1.dart';
 import 'package:flutter_15/module_14/class_3.dart';
 import 'package:flutter_15/module_14/splash_screen.dart';
 import 'package:flutter_15/module_16/UI/screens/task_home_page.dart';
+import 'package:flutter_15/module_17/screens/api_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_10/class_3.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         // },
         // initialRoute: '/SplashScreen',
 
-        home: TaskHomePage(),
+        home: ApiView(),
 
         theme: ThemeData(
             brightness: Brightness.light,
