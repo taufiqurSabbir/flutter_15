@@ -14,6 +14,71 @@ class ApiView extends StatefulWidget {
 
 class _ApiViewState extends State<ApiView> {
   List<postModel> posts = [];
+  TextEditingController titleController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
+
+  Future<void>addPost() async {
+    final response =await http.post(
+      Uri.parse(Urls.createPost),
+      body: json.encode({
+        "title": titleController.text,
+        "body":bodyController.text
+      }),
+    );
+
+    print(json.encode({
+      "title": titleController.text,
+      "body":bodyController.text
+    }),);
+
+
+    log(response.statusCode.toString());
+
+
+    if(response.statusCode == 201 || response.statusCode == 200){
+      Navigator.pop(context);
+      await fetchPosts();
+    }
+  }
+
+  showAddPostDialog(){
+    showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text('Add post'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextFormField(
+              controller: titleController,
+              decoration: InputDecoration(
+                labelText: 'Title',
+
+              ),
+            ),
+            SizedBox(height: 10,),
+            TextFormField(
+              controller: bodyController,
+              decoration: InputDecoration(
+                labelText: 'Body',
+
+              ),
+            )
+
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text('Cancel')),
+          
+          ElevatedButton(onPressed: (){
+            addPost();
+          }, child: Text('Add'))
+        ],
+      );
+    });
+    
+  }
 
   Future<void>fetchPosts() async {
     final response = await http.get(Uri.parse(Urls.getPost));
@@ -77,6 +142,9 @@ class _ApiViewState extends State<ApiView> {
           }
 
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        showAddPostDialog();
+      },child: Icon(Icons.add),),
     );
   }
 }
