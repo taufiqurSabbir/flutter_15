@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/data/model/task_model.dart';
+import 'package:task_manager/screens/add_new_task_screen.dart';
 import 'package:task_manager/utils/app_color.dart';
 import 'package:task_manager/widgets/task_card.dart';
 import 'package:task_manager/widgets/task_count_by_status.dart';
@@ -15,6 +16,8 @@ class NewTaskScreen extends StatefulWidget {
 class _NewTaskScreenState extends State<NewTaskScreen> {
   @override
   Widget build(BuildContext context) {
+
+    
     return Scaffold(
       body: Column(
         children: [
@@ -57,6 +60,9 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewTaskScreen()));
+      }, child: Icon(Icons.add),),
     );
   }
 }
