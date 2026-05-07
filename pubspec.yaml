@@ -43,6 +43,7 @@ dependencies:
   sqflite:
   path:
   http: ^1.6.0
+  shared_preferences: 
 
 dev_dependencies:
   flutter_test:
