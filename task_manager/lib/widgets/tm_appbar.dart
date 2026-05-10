@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/controller/auth_controller.dart';
 import 'package:task_manager/screens/update_profile_screen.dart';
 import 'package:task_manager/utils/app_color.dart';
 
@@ -27,10 +28,10 @@ class TmAppbar extends StatelessWidget implements PreferredSize{
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Taufiqur Sabbir', style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                Text('${AuthController.userData?.firstName ?? ''} ${AuthController.userData?.lastName ?? ''}', style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Colors.white
                 ),),
-                Text('a@b.com', style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                Text(AuthController.userData!.email.toString() ?? '', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: Colors.white
                 ),),
               ],

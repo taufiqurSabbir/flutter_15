@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/data/model/api_response.dart';
+import 'package:task_manager/data/service/api_caller.dart';
+import 'package:task_manager/screens/main_nav_screen.dart';
+import 'package:task_manager/utils/urls.dart';
 import 'package:task_manager/widgets/screen_background.dart';
 import 'package:task_manager/widgets/tm_appbar.dart';
 class AddNewTaskScreen extends StatefulWidget {
@@ -9,6 +13,30 @@ class AddNewTaskScreen extends StatefulWidget {
 }
 
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+
+  Future <void> addNewTask() async {
+    Map<String,dynamic>requestBody = {
+      "title":titleController.text,
+      "description": descriptionController.text,
+      "status":"New"
+    };
+
+    final ApiResponse response =await ApiCaller.postRequest(URL: Urls.createTaskURL,
+        body: requestBody
+    );
+
+    if(response.isSuccess){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Sign In success... ')));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));
+
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +54,14 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: titleController,
               decoration: InputDecoration(
                   hintText: 'Title'
               ),
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: descriptionController,
               maxLines: 6,
               decoration: InputDecoration(
                   hintText: 'Description'
@@ -40,6 +70,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
 
             SizedBox(height: 25,),
             FilledButton(onPressed: (){
+              addNewTask();
 
             }, child: Icon(Icons.arrow_circle_right_outlined)),
 

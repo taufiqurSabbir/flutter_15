@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_manager/data/model/user_model.dart';
 
@@ -7,6 +8,7 @@ class AuthController{
 
   static String ? accessToken;
   static UserModel? userData;
+  static final Logger _logger = Logger();
 
 
 
@@ -17,6 +19,7 @@ class AuthController{
    await sharedPreferences.setString('user-data', jsonEncode(model.toJson()));
    accessToken = token;
    userData = model;
+   print(userData);
   }
 
 
@@ -24,6 +27,30 @@ class AuthController{
     SharedPreferences sharedPreferences =await SharedPreferences.getInstance();
     String ?token  = sharedPreferences.getString('token');
 
-    return token != null; jde token faka na hoi tahole true
+    return token != null;
+    // jde token faka na hoi tahole true
   }
+
+  static Future getUserData() async {
+    SharedPreferences sharedPreferences =await SharedPreferences.getInstance();
+    String ?token  = sharedPreferences.getString('token');
+
+    if(token != null){
+      accessToken = token;
+
+    }
+    String ? user  = sharedPreferences.getString('user-data');
+
+    if(user !=null && user.isNotEmpty){
+      userData = UserModel.fromJson(jsonDecode(user));
+
+    }
+
+
+    _logger.i(accessToken);
+    _logger.i(userData);
+
+
+  }
+
 }
