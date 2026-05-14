@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/controller/auth_controller.dart';
+import 'package:task_manager/data/model/api_response.dart';
+import 'package:task_manager/data/model/user_model.dart';
+import 'package:task_manager/data/service/api_caller.dart';
+import 'package:task_manager/screens/main_nav_screen.dart';
+import 'package:task_manager/utils/urls.dart';
 import 'package:task_manager/widgets/screen_background.dart';
 import 'package:task_manager/widgets/tm_appbar.dart';
 
@@ -10,6 +16,60 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _mobileController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    UserModel user = AuthController.userData!;
+
+    _emailController.text = user.email!;
+    _firstNameController.text = user.firstName!;
+    _lastNameController.text = user.lastName!;
+    _mobileController.text = user.mobile!;
+  }
+
+  Future <void> updateProfile() async {
+    Map<String,dynamic>requestBody = {
+      "email":_emailController.text,
+      "firstName":_firstNameController.text,
+      "lastName":_lastNameController.text,
+      "mobile":_mobileController.text,
+
+    };
+
+    if(_passwordController.text.isNotEmpty){
+      requestBody['password'] = _passwordController.text;
+    }
+
+    final ApiResponse response =await ApiCaller.postRequest(URL: Urls.updateProfileURL,
+        body: requestBody
+    );
+
+    if(response.isSuccess){
+      UserModel model = UserModel(
+        sId: AuthController.userData?.sId,
+        email: _emailController.text,
+        firstName:_firstNameController.text,
+        lastName:_lastNameController.text,
+        mobile:_mobileController.text,
+      );
+      
+      AuthController.updateUserData(model);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavScreen()));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Profile update success... ')));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response.responseData['data'])));
+
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,37 +113,44 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: _emailController,
               decoration: InputDecoration(
                   hintText: 'Email'
               ),
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: _firstNameController,
               decoration: InputDecoration(
                   hintText: 'First Name'
               ),
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: _lastNameController,
               decoration: InputDecoration(
                   hintText: 'Last Name'
               ),
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: _mobileController,
               decoration: InputDecoration(
                   hintText: 'Mobile'
               ),
             ),
             SizedBox(height: 25,),
             TextFormField(
+              controller: _passwordController,
               decoration: InputDecoration(
                   hintText: 'Password'
               ),
             ),
 
             SizedBox(height: 25,),
-            FilledButton(onPressed: (){}, child: Icon(Icons.arrow_circle_right_outlined)),
+            FilledButton(onPressed: (){
+              updateProfile();
+            }, child: Icon(Icons.arrow_circle_right_outlined)),
 
 
 
